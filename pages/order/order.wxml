@@ -1,0 +1,44 @@
+<view wx:if="{{!submitted}}" class="page">
+  <view class="section card" catchtap="chooseAddress">
+    <view wx:if="{{address}}" class="address-info">
+      <image class="addr-icon" src="/images/address.png" mode="aspectFit"></image>
+      <view class="addr-text">
+        <view class="address-name">{{address.consignee}} {{address.phone}}</view>
+        <view class="address-detail">{{address.detail}}</view>
+      </view>
+      <text class="edit-hint">></text>
+    </view>
+    <view wx:if="{{!address}}" class="address-empty"><image class="addr-icon" src="/images/address.png"></image>请选择收货地址 ></view>
+  </view>
+
+  <view class="section">
+    <view wx:for="{{cartList}}" wx:key="id" class="order-item card">
+      <image class="order-item-img" src="{{item.image && item.image.indexOf('http')===0 ? item.image : 'http://localhost:8080' + (item.image || '')}}" mode="aspectFill"></image>
+      <view class="item-info">
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-flavor" wx:if="{{item.dishFlavor}}">{{item.dishFlavor}}</view>
+      </view>
+      <view class="item-right">
+        <view class="item-price">¥{{item.amount}}</view>
+        <view class="item-qty">x{{item.number}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section card row">
+    <image class="small-icon" src="/images/money.png"></image>
+    <input class="remark-input" placeholder="选填：口味、备注等" bindinput="onRemarkInput" />
+  </view>
+
+  <view class="bottom-bar">
+    <view class="total">合计: <text class="total-price">¥{{total}}</text></view>
+    <view class="submit-btn" catchtap="submitOrder">提交订单</view>
+  </view>
+</view>
+
+<view wx:if="{{submitted}}" class="success-page">
+  <image class="success-img" src="/images/success.png"></image>
+  <text class="success-text">下单成功！</text>
+  <text class="success-desc">商家正在准备您的订单</text>
+  <view class="back-btn" catchtap="goBack">返回首页</view>
+</view>

@@ -1,0 +1,102 @@
+/* 状态栏 */
+.status-bar {
+  background: linear-gradient(135deg, #ff6b35, #ff8a50);
+  padding: 40rpx 30rpx;
+  text-align: center;
+}
+.status-text {
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: bold;
+  display: block;
+}
+.status-desc {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.85);
+  margin-top: 10rpx;
+  display: block;
+}
+
+/* 区块 */
+.section { margin: 20rpx; }
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+/* 收货信息 */
+.info-text {
+  font-size: 26rpx;
+  color: #333;
+  display: block;
+  line-height: 1.6;
+}
+.info-text.addr { margin-top: 8rpx; color: #666; }
+
+/* 订单信息行 */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+.info-label { font-size: 24rpx; color: #999; }
+.info-value { font-size: 24rpx; color: #333; }
+
+/* 菜品明细 */
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+.detail-img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+  background: #f5f5f5;
+}
+.detail-info { flex: 1; min-width: 0; }
+.detail-name { font-size: 26rpx; color: #333; display: block; }
+.detail-flavor { font-size: 22rpx; color: #999; margin-top: 4rpx; display: block; }
+.detail-qty { font-size: 24rpx; color: #999; margin-right: 20rpx; }
+.detail-price { font-size: 26rpx; color: #333; min-width: 80rpx; text-align: right; }
+
+/* 合计 */
+.total-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.total-label { font-size: 28rpx; color: #333; font-weight: bold; }
+.total-amount { font-size: 36rpx; color: #ff6b35; font-weight: bold; }
+
+/* 操作按钮 */
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20rpx 40rpx;
+  gap: 20rpx;
+}
+.btn {
+  padding: 16rpx 40rpx;
+  border-radius: 36rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+.btn-cancel {
+  border: 1rpx solid #ddd;
+  color: #666;
+  background: #fff;
+}
+.btn-repetition {
+  background: #ff6b35;
+  color: #fff;
+}
+.btn-urge {
+  background: #2196f3;
+  color: #fff;
+}

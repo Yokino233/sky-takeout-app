@@ -1,0 +1,62 @@
+<view class="page">
+  <!-- 顶部Tab切换 -->
+  <scroll-view class="tabs" scroll-x>
+    <view class="tab {{currentTab === item.key ? 'active' : ''}}"
+          wx:for="{{tabs}}" wx:key="key"
+          data-key="{{item.key}}" catchtap="switchTab">
+      {{item.label}}
+    </view>
+  </scroll-view>
+
+  <!-- 订单列表 -->
+  <view wx:if="{{list.length > 0}}" class="order-list">
+    <view class="order-card card" wx:for="{{list}}" wx:key="id"
+          data-id="{{item.id}}" catchtap="goDetail">
+      <!-- 头部：订单号 + 状态 -->
+      <view class="order-header">
+        <text class="order-number">订单号：{{item.number}}</text>
+        <text class="order-status" style="color:{{statusColor[item.status]}}">{{statusText[item.status]}}</text>
+      </view>
+
+      <!-- 订单时间 -->
+      <text class="order-time">{{item.orderTime}}</text>
+
+      <!-- 订单菜品预览 -->
+      <view class="order-items">
+        <view class="order-item" wx:for="{{item.orderDetailList}}" wx:key="id" wx:for-item="detail">
+          <image class="item-img" src="{{detail.image && detail.image.indexOf('http')===0 ? detail.image : 'http://localhost:8080' + (detail.image || '')}}" mode="aspectFill"></image>
+          <view class="item-info">
+            <text class="item-name">{{detail.name}}</text>
+            <text wx:if="{{detail.dishFlavor}}" class="item-flavor">{{detail.dishFlavor}}</text>
+          </view>
+          <view class="item-right">
+            <text class="item-price">¥{{detail.amount}}</text>
+            <text class="item-qty">x{{detail.number}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 底部：合计 + 操作按钮 -->
+      <view class="order-footer">
+        <text class="order-total">合计：<text class="total-price">¥{{item.amount}}</text></text>
+        <view class="action-btns">
+          <view wx:if="{{item.status === 1 || item.status === 2}}"
+                class="btn btn-cancel" data-id="{{item.id}}" catchtap="cancelOrder">取消订单</view>
+          <view wx:if="{{item.status === 5}}"
+                class="btn btn-repetition" data-id="{{item.id}}" catchtap="repetition">再来一单</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{list.length === 0 && !loading}}" class="empty">
+    <image class="empty-img" src="/images/no_order.png"></image>
+    <text class="empty-text">暂无订单</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>

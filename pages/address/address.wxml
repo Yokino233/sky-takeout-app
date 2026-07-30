@@ -1,0 +1,43 @@
+<view class="page">
+  <!-- 新增表单弹窗 -->
+  <view wx:if="{{showForm}}" class="form-overlay">
+    <view class="form-card">
+      <view class="form-title">{{formMode === 'add' ? '新增地址' : '编辑地址'}}</view>
+      <input class="form-input" placeholder="收件人姓名" value="{{formName}}" bindinput="onFormName" />
+      <input class="form-input" placeholder="手机号码" type="number" value="{{formPhone}}" bindinput="onFormPhone" />
+      <input class="form-input" placeholder="详细地址" value="{{formDetail}}" bindinput="onFormDetail" />
+      <view class="form-actions">
+        <view class="form-btn cancel" catchtap="closeForm">取消</view>
+        <view class="form-btn submit" catchtap="saveAddress">保存</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{list.length === 0 && !showForm}}" class="empty">
+    <image class="empty-img" src="/images/no_adress.png"></image>
+    <text class="empty-text">暂无地址</text>
+  </view>
+
+  <view wx:for="{{list}}" wx:key="id" class="address-item card">
+    <view class="addr-top">
+      <text class="addr-name">{{item.consignee}}</text>
+      <text class="addr-phone">{{item.phone}}</text>
+      <image wx:if="{{item.isDefault === 1}}" class="select-icon" src="/images/select.png"></image>
+    </view>
+    <view class="addr-detail">{{item.detail}}</view>
+    <view class="addr-actions">
+      <view class="action-btn" catchtap="setDefault" data-id="{{item.id}}">
+        <image class="action-icon" src="/images/select.png"></image>设为默认
+      </view>
+      <view class="action-btn" catchtap="delAddr" data-id="{{item.id}}">
+        <image class="action-icon" src="/images/clear.png"></image>删除
+      </view>
+    </view>
+  </view>
+
+  <view class="add-btn-wrap">
+    <view class="add-btn" catchtap="addAddress">
+      <image class="add-icon" src="/images/add.png"></image>新增地址
+    </view>
+  </view>
+</view>

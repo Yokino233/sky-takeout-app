@@ -1,0 +1,25 @@
+<view class="page">
+  <view wx:if="{{list.length === 0}}" class="empty">
+    <image class="empty-img" src="/images/no_order.png"></image>
+    <text class="empty-text">购物车是空的</text>
+  </view>
+
+  <view wx:if="{{list.length > 0}}" class="cart-list">
+    <view wx:for="{{list}}" wx:key="id" class="cart-item card">
+      <image class="item-img" src='{{item.image}}' mode="aspectFill" data-index="{{index}}"></image>
+      <view class="item-info">
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-flavor" wx:if="{{item.dishFlavor}}">口味: {{item.dishFlavor}}</view>
+        <view class="item-price">
+      <image class="money-mini" src="/images/money.png"></image>¥{{item.amount}}</view>
+        <view class="item-num">数量: {{item.number}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{list.length > 0}}" class="bottom-bar">
+    <view class="total">合计: <text class="total-price">¥{{total}}</text></view>
+    <view class="clear-btn" catchtap="cleanCart">清空</view>
+    <view class="settle-btn" catchtap="goOrder">去结算</view>
+  </view>
+</view>

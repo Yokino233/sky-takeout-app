@@ -1,0 +1,106 @@
+.page {
+  display: flex;
+  height: 100vh;
+}
+.shop-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  text-align: center;
+  padding: 6rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+.shop-status.open { background: #1aad19; }
+.shop-status.closed { background: #999; }
+
+.category-bar {
+  width: 180rpx;
+  height: 100vh;
+  background: #f8f8f8;
+  padding-top: 60rpx;
+  flex-shrink: 0;
+}
+.category-item {
+  padding: 28rpx 20rpx;
+  font-size: 26rpx;
+  color: #333;
+  text-align: center;
+  border-left: 4rpx solid transparent;
+}
+.category-item.active {
+  background: #fff;
+  color: #ff6b35;
+  border-left-color: #ff6b35;
+  font-weight: bold;
+}
+
+.content-area {
+  flex: 1;
+  height: 100vh;
+  padding: 60rpx 20rpx 20rpx;
+  box-sizing: border-box;
+}
+.dish-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 16rpx;
+}
+.dish-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+.dish-info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.dish-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #222;
+}
+.dish-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dish-price {
+  margin-top: 12rpx;
+}
+.price-symbol {
+  font-size: 22rpx;
+  color: #ff6b35;
+}
+.price-value {
+  font-size: 32rpx;
+  color: #ff6b35;
+  font-weight: bold;
+}
+.add-btn {
+  position: absolute;
+  right: 16rpx;
+  bottom: 16rpx;
+  width: 48rpx;
+  height: 48rpx;
+  background: #ff6b35;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 48rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.empty-tip {
+  text-align: center;
+  padding: 60rpx;
+  color: #999;
+  font-size: 28rpx;
+}
