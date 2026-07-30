@@ -45,7 +45,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.16.2",
-  "appid": "wx1f42d7a2f216a8c2",
+  "appid": "YOUR_APPID",
   "projectname": "sky-take-out-app",
   "condition": {},
   "simulatorPluginLibVersion": {},
